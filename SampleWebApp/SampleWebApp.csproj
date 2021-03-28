@@ -7,11 +7,12 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Rhetos.Host.AspNet" Version="5.0.0-dev*" />
+    <PackageReference Include="Rhetos.Host.AspNet.Impersonation" Version="5.0.0-dev*" />
+    <PackageReference Include="Rhetos.RestGenerator" Version="5.0.0-dev*" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HomePageSnippetSample\HomePageSnippetSample.csproj" />
-    <ProjectReference Include="..\Rhetos.Host.AspNet.HomePage\Rhetos.Host.AspNet.HomePage\Rhetos.Host.AspNet.HomePage.csproj" />
     <ProjectReference Include="..\RhetosApp\RhetosApp.csproj" />
   </ItemGroup>
 

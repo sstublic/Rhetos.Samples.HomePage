@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhetos.Host.AspNet.HomePage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhetosApp", "..\RhetosApp\RhetosApp.csproj", "{B1E931C4-B732-4845-9716-F62899D6ECE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWebApp", "..\SampleWebApp\SampleWebApp.csproj", "{D5369692-F7BD-4B72-BDE9-9D1AF991C014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleWebApp", "..\SampleWebApp\SampleWebApp.csproj", "{D5369692-F7BD-4B72-BDE9-9D1AF991C014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomePageSnippetSample", "..\HomePageSnippetSample\HomePageSnippetSample.csproj", "{AED13A2C-5173-4701-A0FB-92AF3CF10DAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomePageSnippetSample", "..\HomePageSnippetSample\HomePageSnippetSample.csproj", "{AED13A2C-5173-4701-A0FB-92AF3CF10DAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

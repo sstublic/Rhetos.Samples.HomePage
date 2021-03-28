@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Rhetos.Host.AspNet;
-using Rhetos.Host.AspNet.HomePage;
 
 namespace HomePageSnippetSample
 {
@@ -11,8 +11,8 @@ namespace HomePageSnippetSample
     {
         public static RhetosAspNetServiceCollectionBuilder AddSampleSnippets(this RhetosAspNetServiceCollectionBuilder rhetosBuilder)
         {
-            rhetosBuilder.AddHomePage(typeof(DemoComponent));
-            rhetosBuilder.AddHomePage(typeof(DemoComponent2));
+            rhetosBuilder.AddDashboardSnippet(typeof(DemoComponent), "Demo");
+            rhetosBuilder.AddDashboardSnippet(typeof(DemoComponent2), "Demo2");
             return rhetosBuilder;
         }
     }

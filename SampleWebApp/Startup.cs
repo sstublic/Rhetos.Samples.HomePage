@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HomePageSnippetSample;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Rhetos;
-using Rhetos.Host.AspNet;
-using Rhetos.Host.AspNet.HomePage;
 
 namespace SampleWebApp
 {
@@ -33,12 +33,22 @@ namespace SampleWebApp
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleWebApp", Version = "v1" });
+                c.SwaggerDoc("rhetos", new OpenApiInfo { Title = "rhetos", Version = "v1" });
             });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(o => o.Events.OnRedirectToLogin = context =>
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    return Task.CompletedTask;
+                });
 
             services
                 .AddRhetos(builder => ConfigureRhetosHostBuilder(builder, Configuration))
                 .UseAspNetCoreIdentityUser()
-                .AddHomePage()
+                .AddRestApi(o => { })
+                .AddImpersonation()
+                .AddDashboard()
                 .AddSampleSnippets();
         }
 
@@ -49,18 +59,23 @@ namespace SampleWebApp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SampleWebApp v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "SampleWebApp v1");
+                    c.SwaggerEndpoint("/swagger/rhetos/swagger.json", "Rhetos");
+                });
             }
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
-            app.UseRhetosHomePage("/rhetos-custom/dashboard");
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapRhetosDashboard();
             });
         }
 

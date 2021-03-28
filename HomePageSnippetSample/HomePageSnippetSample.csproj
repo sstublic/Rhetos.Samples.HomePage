@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rhetos.Host.AspNet.HomePage\Rhetos.Host.AspNet.HomePage\Rhetos.Host.AspNet.HomePage.csproj" />
+    <PackageReference Include="Rhetos.Host.AspNet" Version="5.0.0-dev*" />
   </ItemGroup>
 
 </Project>
